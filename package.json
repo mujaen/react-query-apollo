@@ -1,0 +1,25 @@
+{
+  "name": "react-query-apollo",
+  "version": "1.0.0",
+  "description": "recoil+ react-query using GraphQL(Apollo)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mujaen/react-query-apollo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mujaen/react-query-apollo/issues"
+  },
+  "homepage": "https://github.com/mujaen/react-query-apollo#readme",
+  "packageManager": "yarn@3.2.1",
+  "devDependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
