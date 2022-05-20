@@ -4,7 +4,7 @@
   "description": "recoil+ react-query using GraphQL(Apollo)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=development webpack --config webpack/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "@babel/preset-env": "^7.18.0",
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
+    "cross-env": "^7.0.3",
     "esbuild-loader": "^2.19.0",
     "typescript": "^4.6.4",
     "webpack": "^5.72.1",
