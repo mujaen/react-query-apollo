@@ -32,6 +32,7 @@ nvm use 16.15.0
 
 ```
 yarn set version berry
+yarn install
 ```
 
 ## Getting Started
