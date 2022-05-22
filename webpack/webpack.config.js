@@ -1,4 +1,5 @@
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 
 module.exports = (options) => ({
@@ -7,6 +8,7 @@ module.exports = (options) => ({
   output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(process.cwd(), 'build'),
+    publicPath: '/',
   },
   optimization: {
     minimizer: [
@@ -32,4 +34,10 @@ module.exports = (options) => ({
       }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: './src/index.html',
+    }),
+  ]
 });
