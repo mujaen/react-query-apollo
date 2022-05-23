@@ -14,11 +14,9 @@ const App = () => {
     );
 };
 
-function Example() {
-    const { isLoading, error, data, isFetching } = useQuery("repoData", () =>
-        axios.get(
-            "https://api.github.com/repos/tannerlinsley/react-query"
-        ).then((res) => res.data)
+const Example = () => {
+    const { isLoading, error, data, isSuccess } = useQuery('repoData', () =>
+        axios.get('https://api.github.com/repos/tannerlinsley/react-query').then((res) => res.data)
     );
 
     if (isLoading) return "Loading...";
@@ -27,15 +25,12 @@ function Example() {
 
     return (
         <div>
+            <p>{isSuccess ? '예2233' : '아니오'}</p>
             <h1>{data.name}</h1>
             <p>{data.description}</p>
-            <strong>👀 {data.subscribers_count}</strong>{" "}
-            <strong>✨ {data.stargazers_count}</strong>{" "}
-            <strong>🍴 {data.forks_count}</strong>
-            <div>{isFetching ? "Updating..." : ""}</div>
         </div>
     );
-}
+};
 
 const root = createRoot(rootNode);
 root.render(<App />);

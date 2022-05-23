@@ -6,7 +6,10 @@ const webpack = require('webpack');
 
 module.exports = (options) => ({
   mode: 'development',
-  entry: path.join(process.cwd(), 'src/app.tsx'),
+  entry: [
+    'webpack-hot-middleware/client?reload=true',
+    path.join(process.cwd(), 'src/app.tsx')
+  ],
   output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(process.cwd(), 'build'),
@@ -37,6 +40,7 @@ module.exports = (options) => ({
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
       DIST_ENV: JSON.stringify(process.env.DIST_ENV),
