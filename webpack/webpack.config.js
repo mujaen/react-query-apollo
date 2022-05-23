@@ -1,9 +1,11 @@
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require("path");
+const packageJSON = require('../package.json');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = (options) => ({
-  mode: options.NODE_ENV,
+  mode: 'development',
   entry: path.join(process.cwd(), 'src/app.tsx'),
   output: {
     filename: '[name].[chunkhash].js',
@@ -35,6 +37,11 @@ module.exports = (options) => ({
     ]
   },
   plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+      DIST_ENV: JSON.stringify(process.env.DIST_ENV),
+      RELEASE: JSON.stringify(packageJSON.version),
+    }),
     new HtmlWebpackPlugin({
       inject: true,
       template: './src/index.html',
