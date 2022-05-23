@@ -25,7 +25,7 @@ const Example = () => {
 
     return (
         <div>
-            <p>{isSuccess ? '예2233' : '아니오'}</p>
+            <p>{isSuccess ? '예' : '아니오'}</p>
             <h1>{data.name}</h1>
             <p>{data.description}</p>
         </div>
