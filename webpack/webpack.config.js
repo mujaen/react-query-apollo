@@ -23,6 +23,7 @@ module.exports = (options) => ({
     ]
   },
   resolve: {
+    modules: ['src', 'node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
