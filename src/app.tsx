@@ -2,7 +2,7 @@ import React from 'react';
 import {createRoot} from 'react-dom/client';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import axios from 'axios';
-
+import LoginPage from "./container/LoginPage";
 const rootNode = document.getElementById('app');
 const queryClient = new QueryClient();
 
@@ -10,6 +10,7 @@ const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <Example />
+            <LoginPage />
         </QueryClientProvider>
     );
 };
@@ -26,7 +27,7 @@ const Example = () => {
     return (
         <div>
             <p>{isSuccess ? '예' : '아니오'}</p>
-            <h1>{data.name}</h1>
+            <h1>{data.created_at}</h1>
             <p>{data.description}</p>
         </div>
     );
