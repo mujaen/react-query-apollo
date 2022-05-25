@@ -2,7 +2,7 @@ import React from 'react';
 import {createRoot} from 'react-dom/client';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import axios from 'axios';
-import LoginPage from "container/LoginPage";
+import Index from "pages/LoginPage";
 const rootNode = document.getElementById('app');
 const queryClient = new QueryClient();
 
@@ -10,7 +10,7 @@ const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <Example />
-            <LoginPage />
+            <Index />
         </QueryClientProvider>
     );
 };
