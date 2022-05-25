@@ -1,5 +1,6 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
+import {RecoilRoot} from "recoil";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import axios from 'axios';
 import Index from "pages/LoginPage";
@@ -9,8 +10,10 @@ const queryClient = new QueryClient();
 const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
+          <RecoilRoot>
             <Example />
             <Index />
+          </RecoilRoot>
         </QueryClientProvider>
     );
 };

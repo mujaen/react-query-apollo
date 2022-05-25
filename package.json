@@ -40,6 +40,7 @@
     "webpack-hot-middleware": "^2.25.1"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "recoil": "^0.7.3-alpha.2"
   }
 }
