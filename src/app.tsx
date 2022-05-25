@@ -3,7 +3,7 @@ import {createRoot} from 'react-dom/client';
 import {RecoilRoot} from "recoil";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import axios from 'axios';
-import Index from "pages/LoginPage";
+import Login from "components/Login";
 const rootNode = document.getElementById('app');
 const queryClient = new QueryClient();
 
@@ -12,7 +12,7 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
           <RecoilRoot>
             <Example />
-            <Index />
+            <Login />
           </RecoilRoot>
         </QueryClientProvider>
     );
