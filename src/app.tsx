@@ -1,10 +1,9 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import {RecoilRoot} from "recoil";
+import {RecoilRoot, useRecoilState} from "recoil";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import axios from 'axios';
-import Login from "components/Login";
-import Notice from "components/Notice";
+import MyPage from 'pages/MyPage';
 const rootNode = document.getElementById('app');
 const queryClient = new QueryClient();
 
@@ -13,8 +12,7 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
           <RecoilRoot>
             <Example />
-            <Login />
-            <Notice />
+            <MyPage />
           </RecoilRoot>
         </QueryClientProvider>
     );

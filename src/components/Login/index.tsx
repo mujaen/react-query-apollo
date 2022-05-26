@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { startDateState } from 'atoms/Calendar'
+import { startDateState } from 'store/Calendar/atoms'
 
 interface LoginProps {
   loading: boolean
