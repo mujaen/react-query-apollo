@@ -1,11 +1,14 @@
 import React, {useRef, Suspense} from 'react';
 import {useResetRecoilState, useSetRecoilState} from "recoil";
-import {userRepoInfoState, getUserRepoInfo} from 'store/User';
+import {userRepoInfoState, userProfileState, getUserRepoInfo} from 'store/User';
+import {rootDeviceState} from 'store/Root';
 import Mypage from 'components/Mypage';
+import {setLocalStorage} from "../../utils/recoil";
 
 
 const MyPage:React.FC = () => {
   const setUserInfo = useSetRecoilState(userRepoInfoState);
+  const setUserProfile = useSetRecoilState(userProfileState);
   const resetUserInfo = useResetRecoilState(getUserRepoInfo);
   const userRef = useRef();
   const repoRef = useRef();
@@ -18,6 +21,11 @@ const MyPage:React.FC = () => {
     setUserInfo(info);
   };
 
+  const handleChange = (event) => {
+    setUserProfile(event.target.value);
+    setLocalStorage('profile', event.target.value);
+  };
+
   const resetClick = () => {
     resetUserInfo();
   };
@@ -26,6 +34,7 @@ const MyPage:React.FC = () => {
     <>
       <input type="text" ref={userRef}/>
       <input type="text" ref={repoRef}/>
+      <input type="text" onChange={handleChange}/>
       <button type="button" onClick={handleClick}>가져오기</button>
       <button type="button" onClick={resetClick}>Reset</button>
       <Suspense>

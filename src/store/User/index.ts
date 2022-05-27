@@ -1,13 +1,13 @@
 import {atom, selector, DefaultValue} from 'recoil';
+import {recoilPersist} from 'recoil-persist';
 import axios, {AxiosResponse} from 'axios';
 import {localStorageBase64} from 'utils/recoil';
-import {recoilPersist} from "recoil-persist";
 
 interface UserInfo {
   [key: string]: string
 }
 
-export const { persistAtom } = recoilPersist({ key: 'userInfo', storage: localStorageBase64() })
+const { persistAtom } = recoilPersist({key: 'User', storage: localStorageBase64()})
 
 export const userRepoInfoState = atom<UserInfo>({
   key: 'userRepoInfo',
@@ -15,7 +15,12 @@ export const userRepoInfoState = atom<UserInfo>({
     user: '',
     repo: ''
   },
-  effects: [persistAtom],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const userProfileState = atom<string>({
+  key: 'userProfile',
+  default: '',
 });
 
 export const getUserRepoInfo = selector({
