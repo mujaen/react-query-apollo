@@ -1,9 +1,7 @@
 import React, {useRef, Suspense} from 'react';
 import {useResetRecoilState, useSetRecoilState} from "recoil";
 import {userRepoInfoState, userProfileState, getUserRepoInfo} from 'store/User';
-import {rootDeviceState} from 'store/Root';
 import Mypage from 'components/Mypage';
-import {setLocalStorage} from "../../utils/recoil";
 
 
 const MyPage:React.FC = () => {
@@ -23,7 +21,6 @@ const MyPage:React.FC = () => {
 
   const handleChange = (event) => {
     setUserProfile(event.target.value);
-    setLocalStorage('profile', event.target.value);
   };
 
   const resetClick = () => {
