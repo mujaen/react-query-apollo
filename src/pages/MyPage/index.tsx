@@ -35,7 +35,7 @@ const MyPage:React.FC = () => {
       <button type="button" onClick={handleClick}>가져오기</button>
       <button type="button" onClick={resetClick}>Reset</button>
       <Suspense>
-        <Mypage/>
+        <Mypage perPage="" currentPage="" />
       </Suspense>
     </>
   );

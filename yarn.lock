@@ -3673,6 +3673,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"query-string-for-all@npm:^7.1.1":
+  version: 7.1.1
+  resolution: "query-string-for-all@npm:7.1.1"
+  checksum: 0729b6f4c37dfe98f98e8370e37704bdd1921d04706dd97b40abd50e073bfa240c435eaeaa9e2c7b1779d7830559b552103aa298bf82056068975185db47fda5
+  languageName: node
+  linkType: hard
+
 "querystring@npm:^0.2.0":
   version: 0.2.1
   resolution: "querystring@npm:0.2.1"
@@ -3736,6 +3743,7 @@ __metadata:
     graphql-request: ^4.2.0
     html-webpack-plugin: ^5.5.0
     js-base64: ^3.7.2
+    query-string-for-all: ^7.1.1
     react: 18.0.0
     react-dom: 18.0.0
     react-query: ^3.39.0
