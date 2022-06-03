@@ -5,7 +5,7 @@ interface LoginProps {
   [others: string]: unknown;
 }
 
-const Login: React.RC<LoginProps> = ({loading, ...props}) => {
+const Login: React.FC<LoginProps> = ({loading, ...props}) => {
   return (
     <>
       {props.title}
