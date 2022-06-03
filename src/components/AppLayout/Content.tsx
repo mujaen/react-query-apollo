@@ -1,29 +1,28 @@
-import React, {lazy, Suspense} from 'react';
+import React, { lazy, Suspense, PropsWithChildren } from 'react';
 
 interface ContentProps {
-  template: string
+  template?: string;
+  [others: string]: unknown;
 }
 
-const Spinner = () => {
-  return (
-    <>
-      Loading...
-    </>
-  );
-};
+function Spinner(): JSX.Element {
+  return <>Loading...</>;
+}
 
-const Content: React.FC<ContentProps> = ({children, template, ...props}) => {
-  const TemplateComponent = lazy(() => import('components/Templates/' + template));
+function Content({ children, ...props }: PropsWithChildren<ContentProps>) {
+  const TemplateComponent = lazy(() => import(`components/Templates/${props.template}`));
 
   return (
     <>
-      {template === undefined ? (children) : (
+      {props.template === undefined ? (
+        children
+      ) : (
         <Suspense fallback={<Spinner />}>
           <TemplateComponent {...props} />
         </Suspense>
       )}
     </>
   );
-};
+}
 
 export default Content;
