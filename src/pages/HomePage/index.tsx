@@ -1,9 +1,10 @@
 import React from 'react';
+import Calendar from 'components/Calendar';
 
 const HomePage: React.FC = ({}) => {
   return (
     <>
-      Home
+      <Calendar direction={true} />
     </>
   );
 };
