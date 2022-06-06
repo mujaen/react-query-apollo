@@ -19,6 +19,7 @@ const LoginPage: React.FC = ({}) => {
     startTransition(() => {
       setFilterTerm(event.target.value);
     });
+    //setFilterTerm(event.target.value);
   };
 
   const filteredProducts = filterProducts(filterTerm);
