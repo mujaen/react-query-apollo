@@ -8,9 +8,9 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-const Home = lazy(() => import('pages/HomePage'));
-const Login = lazy(() => import('pages/LoginPage'));
-const Mypage = lazy(() => import('pages/MyPage'));
+import Home from 'pages/HomePage';
+import Login from 'pages/LoginPage';
+import Mypage from 'pages/MyPage';
 
 const rootNode = document.getElementById('app');
 const queryClient = new QueryClient();
