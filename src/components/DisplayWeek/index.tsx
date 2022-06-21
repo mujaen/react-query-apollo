@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formatDateAtom } from 'utils/filters';
 
 interface DisplayWeekDataProps {
-  date: string;
+  date?: string;
+  value?: number;
 }
 
 interface DisplayWeekProps {
@@ -10,18 +12,18 @@ interface DisplayWeekProps {
 }
 
 const WeekRangeText = styled.div`
-  
+  color: #999;
+  font-size: 14px;
+  font-weight: 500;
 `
 
 function DisplayWeek ({data}: DisplayWeekProps) {
 
-  const formatDate = (): string => {
-    return '12';
-  }
+  const thisWeekData = data.slice(0, 7).reverse();
 
   return (
     <>
-      <WeekRangeText>{formatDate}5.19 (목) ~ 5.25 (수)</WeekRangeText>
+      <WeekRangeText>{formatDateAtom(thisWeekData[0].date, 'weekly')} ~ {formatDateAtom(thisWeekData[6].date, 'weekly')}</WeekRangeText>
     </>
   )
 }

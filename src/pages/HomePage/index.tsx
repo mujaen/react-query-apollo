@@ -66,7 +66,7 @@ const HomePage: React.FC = ({}) => {
   return (
     <>
       <LineChart data={trends} width={contentWidth} title='예약 수' />
-      <DisplayWeek />
+      <DisplayWeek data={trends} />
     </>
   );
 };
