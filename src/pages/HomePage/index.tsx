@@ -1,6 +1,7 @@
 import React from 'react';
 import LineChart from 'components/LineChart';
 import DisplayWeek from "../../components/DisplayWeek";
+import Calendar from 'components/Calendar';
 
 const HomePage: React.FC = ({}) => {
   const trends = [
@@ -67,6 +68,7 @@ const HomePage: React.FC = ({}) => {
     <>
       <LineChart data={trends} width={contentWidth} title='예약 수' />
       <DisplayWeek data={trends} />
+      <Calendar direction={true} />
     </>
   );
 };

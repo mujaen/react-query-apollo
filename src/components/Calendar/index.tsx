@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {Calendarprops} from './types';
 import axios from 'axios';
 
-const Calendar:React.FC<Calendarprops> = ({direction, url}) => {
+function Calendar({direction, url}:React.FC<Calendarprops> ) {
     const [today, setToday] = useState(new Date());
     const [data, setData] = useState([]);
+    const weekly = ['일', '월', '화', '수', '목', '금', '토'];
 
     const _prevCalendar = (): void => {
         setToday(new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()));
@@ -40,6 +41,13 @@ const Calendar:React.FC<Calendarprops> = ({direction, url}) => {
               <button type='button' onClick={_nextCalendar}>다음</button>
             </>
           : ''}
+          <table border="1">
+              <tbody>
+
+              </tbody>
+
+          </table>
+          <div>{weekly.map((week) => (<span>{week}</span>))}</div>
       </>
     );
 };
