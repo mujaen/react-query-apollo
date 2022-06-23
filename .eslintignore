@@ -1,0 +1,12 @@
+.gitlab
+.vscode
+.yarn
+lib
+*.html
+node_modules
+build
+coverage
+jest.config.js
+server/
+src/graphql
+.eslintrc.js

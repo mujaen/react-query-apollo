@@ -1,7 +1,8 @@
 import React from 'react';
 import LineChart from 'components/LineChart';
-import DisplayWeek from "../../components/DisplayWeek";
+import DisplayWeek from 'components/DisplayWeek';
 import Calendar from 'components/Calendar';
+import SectionTitle from 'components/Title/SectionTitle';
 
 const HomePage: React.FC = ({}) => {
   const trends = [
@@ -66,6 +67,9 @@ const HomePage: React.FC = ({}) => {
 
   return (
     <>
+      <SectionTitle title="예약 수" count="8">
+        차트기간
+      </SectionTitle>
       <LineChart data={trends} width={contentWidth} title='예약 수' />
       <DisplayWeek data={trends} />
       <Calendar direction={true} />

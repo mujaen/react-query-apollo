@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  "exclude": [
+    "webpack/**",
+    "server/**",
+    "node_modules/**",
+    ".yarn/**",
+    ".vscode/**",
+    "build/**",
+    "coverage/**"
+  ]
+}
