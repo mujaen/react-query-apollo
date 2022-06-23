@@ -5,6 +5,10 @@ import Calendar from 'components/Calendar';
 import SectionTitle from 'components/Title/SectionTitle';
 
 const HomePage: React.FC = ({}) => {
+  const chartOption = {
+    width: 325,
+  }
+
   const trends = [
     {
       date: '2020-06-13T00:00:00.000Z',
@@ -63,14 +67,14 @@ const HomePage: React.FC = ({}) => {
       value: 8
     },
   ]
-  const contentWidth = window.innerWidth - 100;
+
 
   return (
     <>
       <SectionTitle title="예약 수" count="8">
         차트기간
       </SectionTitle>
-      <LineChart data={trends} width={contentWidth} title='예약 수' />
+      <LineChart data={trends} options={chartOption} title="예약 수" />
       <DisplayWeek data={trends} />
       <Calendar direction={true} />
     </>
