@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Calendarprops} from './types';
+import {CalendarProps} from './types';
 import {getNextMonth, getPrevMonth} from 'utils/calendar';
 
-function Calendar({direction}: Calendarprops) {
+function Calendar({data, direction}: CalendarProps) {
   const [yearMonth, setYearMonth] = useState({
     year: 2022,
     month: 1
@@ -12,11 +12,11 @@ function Calendar({direction}: Calendarprops) {
 
   };
 
-  const _nextCalendar = (): void => {
+  const handleNextMonth = (): void => {
     setYearMonth(getNextMonth(yearMonth));
   };
 
-  const _prevCalendar = (): void => {
+  const handlePrevMonth = (): void => {
     setYearMonth(getPrevMonth(yearMonth));
   };
 
@@ -29,8 +29,8 @@ function Calendar({direction}: Calendarprops) {
 
       {direction ?
         <>
-          <button type='button' onClick={_prevCalendar}>이전</button>
-          <button type='button' onClick={_nextCalendar}>다음</button>
+          <button type='button' onClick={handlePrevMonth}>이전</button>
+          <button type='button' onClick={handleNextMonth}>다음</button>
         </>
         : ''}
       <table>
@@ -47,6 +47,9 @@ function Calendar({direction}: Calendarprops) {
         </thead>
         <tbody>
           <tr>
+            {data.map((day, index) => {
+              return
+            })}
             <td>1</td>
           </tr>
         </tbody>

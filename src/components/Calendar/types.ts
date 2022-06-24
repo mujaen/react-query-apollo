@@ -1,6 +1,10 @@
-export interface Calendarprops {
+interface CalendarDataProps {
+
+}
+
+export interface CalendarProps {
     direction?: boolean;
-    url?: string;
+    data?: CalendarDataProps;
 }
 
 export interface YearMonth {
