@@ -1,7 +1,4 @@
-interface YearMonth {
-  year: number;
-  month: number;
-}
+import { YearMonth } from 'components/Calendar/types';
 
 export const getNextMonth = (yearMonth: YearMonth): YearMonth => {
   return {

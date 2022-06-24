@@ -3,7 +3,6 @@ import {Calendarprops} from './types';
 import {getNextMonth, getPrevMonth} from 'utils/calendar';
 
 function Calendar({direction}: Calendarprops) {
-  const weekly = ['일', '월', '화', '수', '목', '금', '토'];
   const [yearMonth, setYearMonth] = useState({
     year: 2022,
     month: 1
@@ -36,10 +35,20 @@ function Calendar({direction}: Calendarprops) {
         : ''}
       <table>
         <thead>
-          {weekly.map((week) => (<th>{week}</th>))}
+          <tr>
+            <th>일</th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+            <th>토</th>
+          </tr>
         </thead>
         <tbody>
-
+          <tr>
+            <td>1</td>
+          </tr>
         </tbody>
       </table>
     </>
