@@ -1,10 +1,10 @@
 interface CalendarDataProps {
-
+    day: number;
+    c: string;
 }
 
 export interface CalendarProps {
-    direction?: boolean;
-    data?: CalendarDataProps;
+    data?: CalendarDataProps[];
 }
 
 export interface YearMonth {
