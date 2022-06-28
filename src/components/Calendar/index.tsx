@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {CalendarProps} from './types';
-import {getNextMonth, getPrevMonth} from 'utils/calendar';
+import {getNextMonth, getPrevMonth, drawCalendar} from 'utils/calendar';
 import styled from 'styled-components'
 
 const CalendarWarpper = styled.div`
@@ -10,10 +10,14 @@ const CalendarWarpper = styled.div`
   }
 `
 
+const CalendarYearMonth = styled.h2`
+  
+`
+
 function Calendar({data}: CalendarProps) {
   const [yearMonth, setYearMonth] = useState({
     year: 2022,
-    month: 1
+    month: 6
   });
 
   const handleNextMonth = (): void => {
@@ -24,10 +28,16 @@ function Calendar({data}: CalendarProps) {
     setYearMonth(getPrevMonth(yearMonth));
   };
 
+  const buildCalendar = useMemo(() => {
+    return drawCalendar(yearMonth);
+  }, [yearMonth])
+
+  console.log(buildCalendar)
+
   return (
     <CalendarWarpper>
       <button type='button' onClick={handlePrevMonth}>이전</button>
-      <h2>7월</h2>
+      <CalendarYearMonth>7월</CalendarYearMonth>
       <button type='button' onClick={handleNextMonth}>다음</button>
       <table>
         <thead>
@@ -42,12 +52,13 @@ function Calendar({data}: CalendarProps) {
           </tr>
         </thead>
         <tbody>
-          {data?.map((date) => (
-            <tr>
-              <td>
-                <span>{date.day}</span>
-                <p>{date.c}</p>
-              </td>
+          {buildCalendar.weeks.map((week, index) => (
+            <tr key={index}>
+              {week.days.map((day) => (
+                <td key={day.date.getTime()}>
+                  <span>{day.day}</span>
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>
