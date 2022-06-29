@@ -1,4 +1,4 @@
-import { YearMonth, Calendar, CalendarDay } from 'components/Calendar/types';
+import { YearMonth, Calendar, CalendarDay } from 'components/Calendar/types'
 import format from 'date-fns/format'
 
 /**
@@ -8,10 +8,10 @@ import format from 'date-fns/format'
  */
 export const getNextMonth = (yearMonth: YearMonth): YearMonth => {
   return {
-    year: yearMonth.month === 12 ? yearMonth.month + 1 : yearMonth.year,
+    year: yearMonth.month === 12 ? yearMonth.year + 1 : yearMonth.year,
     month: yearMonth.month === 12 ? 1 : yearMonth.month + 1,
   }
-};
+}
 
 /**
  * 이전 달에 해당되는 연월을 구한다
@@ -23,17 +23,6 @@ export const getPrevMonth = (yearMonth: YearMonth): YearMonth => {
     year: yearMonth.month === 1 ? yearMonth.year - 1 : yearMonth.year,
     month: yearMonth.month === 1 ? 12 : yearMonth.month - 1,
   }
-};
-
-/**
- * 당월 주차를 구한다
- * @param firstDay
- * @param monthDate
- * @description Math.ceil((당월 첫 날 요일 + 당월 전체 일자) / 7일)
- * @type { (firstDay: number, monthDate: number) => number }
- */
-const getWeekOfMonth = (firstDay, monthDate) => {
-  return Math.ceil((firstDay + monthDate) / 7);
 }
 
 /**
@@ -60,12 +49,12 @@ const getLastDayOfMonth = (yearMonth: YearMonth): Date => {
  * @type { (date: Date) => Date }
  */
 const getFirstDayOfWeek = (date: Date): Date => {
-  const firstDay = new Date(date.getTime());
-  const week = date.getDay();
+  const firstDay = new Date(date.getTime())
+  const week = date.getDay()
 
-  firstDay.setDate(firstDay.getDate() - week);
+  firstDay.setDate(firstDay.getDate() - week)
 
-  return firstDay;
+  return firstDay
 }
 
 /**
@@ -74,12 +63,22 @@ const getFirstDayOfWeek = (date: Date): Date => {
  * @type { (date: Date) => Date }
  */
 const getLastDayOfWeek = (date: Date): Date => {
-  const lastDay = new Date(date.getTime());
-  const week = lastDay.getDay();
+  const lastDay = new Date(date.getTime())
+  const week = lastDay.getDay()
 
-  lastDay.setDate(lastDay.getDate() + (6 - week));
+  lastDay.setDate(lastDay.getDate() + (6 - week))
 
-  return lastDay;
+  return lastDay
+}
+
+/**
+ * 마지막 주차 마지막 날의 종료시간을 구한다
+ * @param date
+ * @type { (date: Date) => Date }
+ */
+const toDayEnd = (day: Date): Date => {
+  const date = new Date(day.getFullYear(), day.getMonth(), day.getDate(), 23, 59, 59, 0)
+  return date
 }
 
 /**
@@ -93,54 +92,61 @@ const getLastDayOfWeek = (date: Date): Date => {
  * @type { ({year: number, month: number}) => Calendar }
  */
 export const drawCalendar = (yearMonth: YearMonth): Calendar => {
-  const toDate = new Date();
-  const firstDay = getFirstDayOfMonth(yearMonth);
-  const lastDay = getLastDayOfMonth(yearMonth);
-  const firstOfCalendar = getFirstDayOfWeek(firstDay);
-  const lastOfCalendar = getLastDayOfWeek(lastDay);
-  const day = new Date(firstOfCalendar.getTime());
+  const toDate = new Date()
+  const firstDay = getFirstDayOfMonth(yearMonth)
+  const lastDay = getLastDayOfMonth(yearMonth)
+  const firstOfCalendar = getFirstDayOfWeek(firstDay)
+  const lastOfCalendar = getLastDayOfWeek(lastDay)
+  const day = new Date(firstOfCalendar.getTime())
 
   const calendar: Calendar = {
     weeks: [],
     term: {
-      startedAt: 2,
-      endedAt: 1,
-    }
+      startedAt: firstOfCalendar.getTime(),
+      endedAt: lastOfCalendar.getTime(),
+    },
   }
 
   do {
-    let days: CalendarDay[] = [];
+    let days: CalendarDay[] = []
 
     for (let i = 0; i < 7; i++) {
-      const date = new Date(day.getTime());
+      const date = new Date(day.getTime())
 
-      days = [...days, {
-        dateStr: format(date, 'yyyy-MM-dd'),
-        date: date,
-        term: {
-          startedAt: date.getTime(),
-          endedAt: date.getTime(),
+      days = [
+        ...days,
+        {
+          dateStr: format(date, 'yyyy-MM-dd'),
+          date: date,
+          term: {
+            startedAt: date.getTime(),
+            endedAt: date.getTime(),
+          },
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate(),
+          today:
+            toDate.getFullYear() == date.getFullYear() &&
+            toDate.getMonth() == date.getMonth() &&
+            toDate.getDate() == date.getDate(),
+          currentMonth: yearMonth.month == date.getMonth() + 1,
         },
-        year: date.getFullYear(),
-        month: date.getMonth() + 1,
-        day: date.getDate(),
-        today: true,
-        currentMonth: true,
-      }]
+      ]
 
-      day.setDate(day.getDate() + 1);
+      day.setDate(day.getDate() + 1)
     }
 
-    calendar.weeks = [...calendar.weeks, {
-      days: days,
-      term: {
-        startedAt: 2,
-        endedAt: 1,
-      }
-    }]
-
+    calendar.weeks = [
+      ...calendar.weeks,
+      {
+        days: days,
+        term: {
+          startedAt: days[0].date.getTime(),
+          endedAt: toDayEnd(days[6].date).getTime(),
+        },
+      },
+    ]
   } while (day.getTime() < lastOfCalendar.getTime())
 
   return calendar
 }
-

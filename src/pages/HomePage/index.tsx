@@ -4,40 +4,39 @@ import Calendar from 'components/Calendar';
 const HomePage: React.FC = ({}) => {
   const calendar = [
     {
-      day: 1,
-      c: '일정'
+      dateStr: '2022-06-28',
+      schedules: [],
     },
     {
-      day: 2,
-      c: '일정'
+      dateStr: '2022-06-29',
+      schedules: [],
     },
     {
-      day: 3,
-      c: '일정'
+      dateStr: '2022-06-30',
+      schedules: [
+        {
+          id: '1',
+        },
+      ],
     },
     {
-      day: 4,
-      c: '일정'
+      dateStr: '2022-07-01',
+      schedules: [
+        {
+          id: '1',
+        },
+      ],
     },
     {
-      day: 5,
-      c: '일정'
-    },
-    {
-      day: 6,
-      c: '일정'
-    },
-    {
-      day: 7,
-      c: '일정'
-    },
-    {
-      day: 8,
-      c: '일정'
-    },
-    {
-      day: 9,
-      c: '일정'
+      dateStr: '2022-07-02',
+      schedules: [
+        {
+          id: '1',
+        },
+        {
+          id: '2',
+        },
+      ],
     },
   ]
 

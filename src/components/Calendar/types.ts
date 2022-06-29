@@ -1,39 +1,50 @@
+interface Schedules {
+  id: string
+}
+
 interface CalendarDataProps {
-    day: number;
-    c: string;
+  dateStr: string
+  schedules: Schedules[]
 }
 
 export interface CalendarProps {
-    data?: CalendarDataProps[];
+  data?: CalendarDataProps[]
 }
 
+export interface CalendarStyles {
+  today: boolean
+  month: boolean
+}
+
+export type CalendarMonth = Pick<CalendarStyles, 'month'>
+
 export interface YearMonth {
-    year: number;
-    month: number;
+  year: number
+  month: number
 }
 
 export interface Calendar {
-    weeks: CalendarWeek[];
-    term: Term;
+  weeks: CalendarWeek[]
+  term: Term
 }
 
 export interface CalendarDay {
-  dateStr: string;
-  date: Date;
-  term: Term;
-  year: number;
-  month: number;
-  day: number;
-  today: boolean;
-  currentMonth: boolean;
+  dateStr: string
+  date: Date
+  term: Term
+  year: number
+  month: number
+  day: number
+  today: boolean
+  currentMonth: boolean
 }
 
 interface CalendarWeek {
-  days: CalendarDay[];
-  term: Term;
+  days: CalendarDay[]
+  term: Term
 }
 
-interface Term{
-   startedAt: number;
-   endedAt: number;
+interface Term {
+  startedAt: number
+  endedAt: number
 }
