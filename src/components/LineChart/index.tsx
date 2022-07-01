@@ -10,6 +10,7 @@ interface LineChartDataProps {
 
 interface LineChartOptionProps {
     width?: number
+    title?: string
 }
 
 interface LineChartProps {
@@ -76,8 +77,9 @@ const StyledLastLabelPath = styled.path`
   fill: none;
 `
 
-function LineChart({ data, options, title }: LineChartProps) {
+function LineChart({ data, options }: LineChartProps) {
     const initialOptions = {
+        title: options?.title,
         outerWidth: options?.width || 1000,
         outerHeight: 252,
         paddingTop: 50,
@@ -111,6 +113,7 @@ function LineChart({ data, options, title }: LineChartProps) {
         },
     }
     const {
+        title,
         outerWidth,
         outerHeight,
         paddingTop,
