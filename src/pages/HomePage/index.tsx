@@ -1,8 +1,44 @@
 import React from 'react';
 import Calendar from 'components/Calendar';
-import LineChart from 'components/LineChart';
 
 const HomePage: React.FC = ({}) => {
+  const calendar = [
+    {
+      dateStr: '2022-06-28',
+      schedules: [],
+    },
+    {
+      dateStr: '2022-06-29',
+      schedules: [],
+    },
+    {
+      dateStr: '2022-06-30',
+      schedules: [
+        {
+          id: '1',
+        },
+      ],
+    },
+    {
+      dateStr: '2022-07-01',
+      schedules: [
+        {
+          id: '1',
+        },
+      ],
+    },
+    {
+      dateStr: '2022-07-02',
+      schedules: [
+        {
+          id: '1',
+        },
+        {
+          id: '2',
+        },
+      ],
+    },
+  ]
   const trends = [
     {
       date: '2020-06-13T00:00:00.000Z',
@@ -68,8 +104,7 @@ const HomePage: React.FC = ({}) => {
 
   return (
     <>
-      <LineChart data={trends} options={option} />
-      {/*<Calendar direction={true}/>*/}
+      <Calendar data={calendar} />
     </>
   );
 };
