@@ -1,5 +1,7 @@
 import React from 'react';
 import Calendar from 'components/Calendar';
+//import LineChart from 'components/LineChart'
+import LineChart from 'components/Chart'
 
 const HomePage: React.FC = ({}) => {
   const calendar = [
@@ -105,6 +107,8 @@ const HomePage: React.FC = ({}) => {
   return (
     <>
       <Calendar data={calendar} />
+      <LineChart data={trends} />
+      {/*<LineChart data={trends} title="리팩토링" options={option} />*/}
     </>
   );
 };

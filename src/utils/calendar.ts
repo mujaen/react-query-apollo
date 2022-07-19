@@ -147,6 +147,5 @@ export const drawCalendar = (yearMonth: YearMonth): Calendar => {
       },
     ]
   } while (day.getTime() < lastOfCalendar.getTime())
-
   return calendar
 }

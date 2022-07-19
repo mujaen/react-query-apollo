@@ -40,8 +40,10 @@ export interface CalendarDay {
 }
 
 interface CalendarWeek {
-  days: CalendarDay[]
-  term: Term
+  xLabels: string[]
+  yLabels: string[]
+  points: number[]
+  line: number
 }
 
 interface Term {
